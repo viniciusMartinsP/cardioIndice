@@ -1,0 +1,178 @@
+/* ======================================================
+   ESTILO PARA TELA
+   ====================================================== */
+
+@media screen {
+  body {
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 1.05rem;
+    color: #000;
+    background: #fff;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  h5 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p,
+  td,
+  th,
+  span {
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+
+  table th {
+    background-color: #f1f1f1;
+    font-weight: 600;
+  }
+}
+
+/* ======================================================
+   ESTILO PARA IMPRESSÃO / PDF (A4 HOSPITALAR)
+   ====================================================== */
+
+@media print {
+
+  @page {
+    size: A4;
+    margin: 1cm 1cm 2cm 2cm;
+  }
+
+  body {
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 0.9rem;
+    color: #000;
+    background: #fff;
+  }
+
+  /* -------- CABEÇALHO -------- */
+
+  .text-end {
+    font-size: 0.6rem;
+    margin-bottom: 0.15rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  .text-center {
+    margin-top: 0 !important;
+  }
+
+  #exame {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0 !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .text-center.mb-4 {
+    margin-bottom: 0.4rem !important;
+  }
+
+  /* -------- MANTER GRID DO BOOTSTRAP NA IMPRESSÃO -------- */
+
+.row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+[class^="col-"],
+[class*=" col-"] {
+  flex: 0 0 auto;
+}
+
+/* Ajustes específicos mais usados */
+.col-md-4 {
+  width: 33.3333% !important;
+}
+
+.col-md-6 {
+  width: 50% !important;
+}
+
+.col-12 {
+  width: 100% !important;
+}
+
+
+  /* -------- TEXTOS -------- */
+
+  p,
+  td,
+  th,
+  span {
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+
+  h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* -------- TABELAS -------- */
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    page-break-inside: avoid;
+  }
+
+  table th,
+  table td {
+    font-size: 0.8rem;
+    border: 1px solid #000;
+  }
+
+  table th {
+    background-color: #eaeaea !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-weight: 600;
+  }
+
+
+  /* -------- QUEBRAS DE PÁGINA -------- */
+
+  hr {
+    margin: 0.4rem 0;
+    border-top: 1px solid #000;
+  }
+
+  /* -------- AJUSTES BOOTSTRAP -------- */
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  button,
+  .btn {
+    display: none !important;
+  }
+
+  /* ASSINATURA */
+  .assinatura-medico {
+    margin-top: 2cm;        /* empurra para baixo */
+    page-break-inside: avoid;
+    text-align: center;
+  }
+
+}
