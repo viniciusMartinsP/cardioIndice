@@ -1,35 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CardioÍndice</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../css/index.css" />
+  <title>Calculadora de Ecocardiograma Online | Geração Automática de Laudos</title>
+
+  <meta
+    name="description"
+    content="Sistema online para cálculo automático de ecocardiograma e geração de laudos médicos padronizados. Ideal para cardiologistas e clínicas."
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://cardioindice.com.br/" />
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <link rel="stylesheet" href="../css/index.css" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "Calculadora de Ecocardiograma Online",
+  "description": "Sistema online para cálculo automático de ecocardiograma e geração de laudos médicos.",
+  "audience": {
+    "@type": "MedicalAudience",
+    "medicalAudienceType": "Cardiologist"
+  }
+}
+</script>
+    <meta property="og:title" content="Calculadora de Ecocardiograma Online" />
+    <meta property="og:description" content="Sistema online para cálculo automático de ecocardiograma e geração de laudos médicos." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cardioindice.com.br/" />
+    <meta property="og:image" content="https://cardioindice.com.br/img/preview.png" />
+
   </head>
+
 
   <body>
     <!-- Cabeçalho -->
     <header class="bg-light py-3 mb-4 border-bottom">
       <div class="container">
-        <h1 class="h3 mb-0">
-          <img src="../img/logopequeno.png" alt="logo" srcset="">CardioÍndice
+        <h2 class="h3 mb-0">
+        <img 
+          src="../img/logopequeno.png"
+          alt="CardioÍndice - Calculadora de Ecocardiograma e Laudos Automáticos"
+        /> 
+        
+          CardioÍndice — Sistema Online para Cardiologistas
+        </h2>
+
+        <h1 class="h6 mb-0 text-muted"> 
+          Calculadora de Ecocardiograma e Geração Automática de Laudos
         </h1>
+
+        
+
       </div>
     </header>
 
     <!-- Conteúdo Principal -->
     <main class="container py-4">
+
+      <!-- Seção Institucional / SEO -->
+      <section class="mb-4">
+        <h2 class="h5">Calculadora de Ecocardiograma Online</h2>
+        <p class="text-muted">
+          Ferramenta online e gratuita para cálculo automático de ecocardiograma
+          e geração de laudos médicos padronizados, desenvolvida para cardiologistas
+          e clínicas.
+        </p>
+      </section>
+
       <form id="calcForm" class="row g-3">
         <!-- Dados do Paciente -->
         <fieldset class="col-12" id="medico">
@@ -163,7 +216,7 @@
             </div>
 
             <div class="col-md-4">
-              <label class="form-label">Superfície Coporal</label>
+              <label class="form-label">Superfície Corporal</label>
               <input
                 type="text"
                 class="form-control like-disabled"
@@ -609,10 +662,10 @@
         </fieldset>
 
         <fieldset class="col-12" id="conclusao">
-          <legend>Conclusao</legend>
+          <legend>Conclusão</legend>
 
           <div class="row g-2">
-            <textarea name="" id="conclusaoTextArea" class="form-control" rows="5" placeholder="Digite qualquer coisa pertinente ao paciente"></textarea>
+            <textarea name="" id="conclusaoTextArea" class="form-control" rows="5" placeholder="Laudo completo do paciente"></textarea>
           </div>
 
           <div class="col-12 mt-3">

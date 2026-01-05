@@ -86,3 +86,91 @@ input[list] {
 .girando {
   animation: girar 0.5s linear;
 }
+
+/* ====== BASE ====== */
+body {
+  background-color: #f5f7fa;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ====== HEADER ====== */
+header {
+  background: #ffffff;
+}
+
+header h1 {
+  font-weight: 600;
+}
+
+header h2 {
+  font-size: 0.9rem;
+}
+
+/* ====== ÁREA PRINCIPAL ====== */
+main.container {
+  max-width: 1200px;
+}
+
+/* ====== SEO / INSTITUCIONAL ====== */
+section.mb-4 {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+/* ====== FORM ====== */
+form {
+  margin-top: 2rem;
+}
+
+/* ====== FIELDSET COMO CARD ====== */
+fieldset {
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+/* ====== LEGEND ESTILIZADA ====== */
+legend {
+  float: none;
+  width: auto;
+  padding: 0 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+/* ====== LABELS ====== */
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ====== INPUTS ====== */
+.form-control,
+.form-select {
+  border-radius: 8px;
+}
+
+/* ====== BOTÃO PRINCIPAL ====== */
+#btnGerarLaudo {
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background: #ffffff;
+}
+
+section.mb-4 p {
+  max-width: 720px;
+}
+
