@@ -1,695 +1,383 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="pt-br">
 
-  <title>Calculadora de Ecocardiograma Online | Geração Automática de Laudos</title>
+<head>
+  <meta charset="UTF-8">
+  <title>CardioÍndice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="Sistema online para cálculo automático de ecocardiograma e geração de laudos médicos padronizados. Ideal para cardiologistas e clínicas."
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="ui/index.css">
+</head>
 
-  <meta name="robots" content="index, follow" />
+<body>
 
-  <link rel="canonical" href="https://cardioindice.com.br/" />
+  <div class="container my-4">
 
-  <!-- Bootstrap -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+    <!-- BLOCO SEO -->
+    <div class="mb-4">
+      <h2 class="fw-semibold">Calculadora de Ecocardiograma Online</h2>
+      <p class="text-muted">
+        Ferramenta online e gratuita para cálculo automático de ecocardiograma e geração de laudos médicos padronizados.
+      </p>
+    </div>
 
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-  />
+    <form id="main-form">
 
-  <link rel="stylesheet" href="../css/index.css" />
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MedicalWebPage",
-  "name": "Calculadora de Ecocardiograma Online",
-  "description": "Sistema online para cálculo automático de ecocardiograma e geração de laudos médicos.",
-  "audience": {
-    "@type": "MedicalAudience",
-    "medicalAudienceType": "Cardiologist"
-  }
-}
-</script>
-    <meta property="og:title" content="Calculadora de Ecocardiograma Online" />
-    <meta property="og:description" content="Sistema online para cálculo automático de ecocardiograma e geração de laudos médicos." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cardioindice.com.br/" />
-    <meta property="og:image" content="https://cardioindice.com.br/img/preview.png" />
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3061688193935700"
-     crossorigin="anonymous"></script>
-  </head>
-
-
-  <body>
-    <!-- Cabeçalho -->
-    <header class="bg-light py-3 mb-4 border-bottom">
-      <div class="container">
-        <h2 class="h3 mb-0">
-        <img 
-          src="../img/logopequeno.png"
-          alt="CardioÍndice - Calculadora de Ecocardiograma e Laudos Automáticos"
-        /> 
-        
-          CardioÍndice — Sistema Online para Cardiologistas
-        </h2>
-
-        <h1 class="h6 mb-0 text-muted"> 
-          Calculadora de Ecocardiograma e Geração Automática de Laudos
-        </h1>
-
-        
-
+      <!-- DADOS DO MÉDICO -->
+      <div class="card mb-4">
+        <div class="card-header">Dados do Médico</div>
+        <div class="card-body">
+          <input id="medico_nome" class="form-control mb-2" placeholder="Nome do médico">
+          <input id="medico_crm" class="form-control mb-2" placeholder="CRM">
+          <input id="medico_clinica" class="form-control" placeholder="Clínica">
+        </div>
       </div>
-    </header>
 
-    <!-- Conteúdo Principal -->
-    <main class="container py-4">
+      <!-- DADOS DO PACIENTE -->
+      <div class="card mb-4">
+        <div class="card-header">Dados do Paciente</div>
+        <div class="card-body">
 
-      <!-- Seção Institucional / SEO -->
-      <section class="mb-4">
-        <h2 class="h5">Calculadora de Ecocardiograma Online</h2>
-        <p class="text-muted">
-          Ferramenta online e gratuita para cálculo automático de ecocardiograma
-          e geração de laudos médicos padronizados, desenvolvida para cardiologistas
-          e clínicas.
-        </p>
-      </section>
+          <input id="paciente_nome" class="form-control mb-3" placeholder="Nome do paciente">
 
-      <form id="calcForm" class="row g-3">
-        <!-- Dados do Paciente -->
-        <fieldset class="col-12" id="medico">
-          <legend>Dados do Médico</legend>
-          <div class="row mb-2">
-            <div class="col-md-4">
-              <label for="nomeMedico" class="form-label">Nome do Médico</label>
-              <input
-                type="text"
-                title="Insira o nome Completo do Médico"
-                class="form-control"
-                id="nomeMedico"
-                name="nomeMedico"
-                placeholder="Dr(a) José"
-                required
-              />
+          <div class="mb-3">
+            <label class="form-label">Sexo</label><br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="M">
+              <label class="form-check-label" for="sexoM">Masculino</label>
             </div>
-            <div class="col-md-4">
-              <label for="CRM" class="form-label">CRM</label>
-              <input
-                type="text"
-                title="Insira o CRM"
-                class="form-control"
-                id="CRM"
-                name="CRM"
-                placeholder="CRM/UF XXXXXX "
-                required
-              />
-            </div>
-
-            <div class="col-md-4">
-              <label for="clinica" class="form-label">Clínica</label>
-              <input
-                type="text"
-                title="Nome da Clínica"
-                class="form-control"
-                id="clinica"
-                name="clinica"
-                placeholder="Clínica Cardiológica ABC"
-                required
-              />
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset class="col-12" id="paciente">
-          <legend>Dados do Paciente</legend>
-          <div class="row mb-2">
-            <div class="col-md-4">
-              <label for="nome" class="form-label">Nome</label>
-              <input
-                type="text"
-                title="Insira o nome Completo do Paciente"
-                class="form-control"
-                id="nome"
-                name="nome"
-                placeholder="José"
-                required
-              />
-            </div>
-
-            <div class="col-md-4">
-              <label for="dataNascimento" class="form-label"
-                >Data de Nascimento</label
-              >
-              <input
-                type="date"
-                class="form-control"
-                id="dataNascimento"
-                name="dataNascimento"
-                required
-              />
-            </div>
-
-            <div class="col-md-4">
-              <label class="form-label d-block">Sexo</label>
-              <div class="d-flex justify-content">
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="sexo"
-                    id="sexoM"
-                    value="M"
-                    required
-                  />
-                  <label class="form-check-label" for="sexoM">Masculino</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="sexo"
-                    id="sexoF"
-                    value="F"
-                    required
-                  />
-                  <label class="form-check-label" for="sexoF">Feminino</label>
-                </div>
-              </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="F">
+              <label class="form-check-label" for="sexoF">Feminino</label>
             </div>
           </div>
 
-          <div class="row mb-2">
-            <div class="col-md-4">
-              <label for="peso" class="form-label">Peso (kg)</label>
-              <input type="text" 
-                inputmode="numeric" pattern="\d{1,3}"
-                maxlength="3"
-                class="form-control"
-                id="peso"
-                name="peso"
-                placeholder="Ex: 70"
-                required
-              >
+          <div class="row">
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Data de Nascimento</label>
+              <input type="date" id="data_nascimento" class="form-control">
             </div>
-
-            <div class="col-md-4">
-              <label for="altura" class="form-label">Altura (cm)</label>
-              <input
-                type="text"
-                inputmode="numeric"
-                pattern="\d{1,3}"
-                maxlength="3"
-                class="form-control"
-                id="altura"
-                name="altura"
-                placeholder="Ex: 175 cm"
-                required
-              />
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Peso</label>
+              <input id="peso" type="number" class="form-control" placeholder="Peso (kg)">
             </div>
-
-            <div class="col-md-4">
-              <label class="form-label">Superfície Corporal</label>
-              <input
-                type="text"
-                class="form-control like-disabled"
-                id="superficieCorporal"
-                readonly
-              />
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Altura</label>
+              <input id="altura" type="number" class="form-control" placeholder="Altura (cm)">
             </div>
           </div>
 
-          <div class="col-md-4">
-            <label class="form-label" for="exame">Tipo de exame:</label>
-            <select name="exame" id="exame" class="form-select">
-              <option value="Ecocardiograma Transtorácico">
-                Ecocardiograma Transtorácico
-              </option>
-            </select>
+          <input type="hidden" id="imc">
+          <input type="hidden" id="superficie_corporal">
+        </div>
+      </div>
+
+      <!-- MEDIDAS -->
+      <div class="card mb-4">
+        <div class="card-header">Medidas</div>
+        <div class="card-body row g-3">
+
+          <div class="col-md-6">
+            <label>Aorta (Raiz)</label>
+            <input id="aorta_raiz" type="number" class="form-control">
+            <small id="ref_aorta_raiz"></small>
           </div>
-        </fieldset>
 
-        <!-- Medições -->
-        <fieldset class="col-12" id="medicoes">
-          <legend>Medidas</legend>
-          <div class="row g-2">
-            <div class="col-md-6 col-lg-4">
-              <label for="aorta" class="form-label">Aorta (Raiz)</label>
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="aorta"
-                name="aorta"
-                placeholder="Ex: 30 mm"
-              />
-              <small id="ref-aorta" class="text-muted d-block">Ref: --</small>
-            </div>
+          <div class="col-md-6">
+            <label>Átrio Esquerdo</label>
+            <input id="atrio_esquerdo" type="number" class="form-control">
+            <small id="ref_atrio_esquerdo"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="atrioEsquerdo" class="form-label"
-                >Átrio Esquerdo</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="atrioEsquerdo"
-                name="atrioEsquerdo"
-                placeholder="Ex: 40 mm"
-              />
-              <small id="ref-atrioEsquerdo" class="text-muted d-block"
-                >Ref: --</small
-              >
-            </div>
+          <div class="col-md-6">
+            <label>Diâmetro basal do VD</label>
+            <input id="vd_basal" type="number" class="form-control">
+            <small id="ref_vd_basal"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="diametroBasalVD" class="form-label"
-                >Diâmetro basal do VD</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="diametroBasalVD"
-                name="diametroBasalVD"
-                placeholder="Ex: 40 mm"
-              />
-              <small id="ref-diametroBasalVD" class="text-muted d-block"
-                >Ref: --</small
-              >
-            </div>
+          <div class="col-md-6">
+            <label>DDVE</label>
+            <input id="ddve" type="number" class="form-control">
+            <small id="ref_ddve"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="diametroDiastolicoFinalVE" class="form-label"
-                >Diâmetro Diastólico final do VE</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="diametroDiastolicoFinalVE"
-                name="diametroDiastolicoFinalVE"
-                placeholder="Ex: 40 mm"
-              />
-              <small
-                id="ref-diametroDiastolicoFinalVE"
-                class="text-muted d-block"
-                >Ref: --</small
-              >
-            </div>
+          <div class="col-md-6">
+            <label>DSVE</label>
+            <input id="dsve" type="number" class="form-control">
+            <small id="ref_dsve"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="diametroSistolicoFinalVE" class="form-label"
-                >Diâmetro Sistólico Final do VE</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="diametroSistolicoFinalVE"
-                name="diametroSistolicoFinalVE"
-                placeholder="Ex: 40 mm"
-              />
-              <small
-                id="ref-diametroSistolicoFinalVE"
-                class="text-muted d-block"
-                >Ref: --</small
-              >
-            </div>
+          <div class="col-md-6">
+            <label>Septo</label>
+            <input id="septo" type="number" class="form-control">
+            <small id="ref_septo"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="espessuraDiastolicaSepto" class="form-label"
-                >Espessura Diastólica do Septo</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="espessuraDiastolicaSepto"
-                name="espessuraDiastolicaSepto"
-                placeholder="Ex: 10 mm"
-              />
-              <small
-                id="ref-espessuraDiastolicaSepto"
-                class="text-muted d-block"
-                >Ref: --</small
-              >
-            </div>
+          <div class="col-md-6">
+            <label>Parede Posterior</label>
+            <input id="paredePosterior" type="number" class="form-control">
+            <small id="ref_paredePosterior"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="paredePosteriorVE" class="form-label"
-                >Parede Posterior VE</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="paredePosteriorVE"
-                name="paredePosteriorVE"
-                placeholder="Ex: 10 mm"
-              />
-              <small id="ref-paredePosteriorVE" class="text-muted d-block"
-                >Ref: --</small
-              >
-            </div>
+          <div class="col-md-6">
+            <label>Volume AE Absoluto</label>
+            <input id="volume_ae_abs" type="number" class="form-control">
+            <small id="ref_volume_ae_abs"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="volumeAEAbsoluto" class="form-label"
-                >Volume A.E. Absoluto</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="volumeAEAbsoluto"
-                name="volumeAEAbsoluto"
-                placeholder="Ex: 10 mm"
-                min="0"
-                max="999"
-                data-threshold="3"
-              />
-              <small id="ref-volumeAEAbsoluto" class="text-muted d-block"
-                >Ref: --</small
-              >
-            </div>
+          <div class="col-md-6">
+            <label>Volume AD Absoluto</label>
+            <input id="volume_ad_abs" type="number" class="form-control">
+            <small id="ref_volume_ad_abs"></small>
+          </div>
 
-            <div class="col-md-6 col-lg-4">
-              <label for="volumeADAbsoluto" class="form-label"
-                >Volume A.D. Absoluto</label
-              >
-              <input
-                type="number"
-                inputmode="numeric"
-                class="form-control"
-                id="volumeADAbsoluto"
-                name="volumeADAbsoluto"
-                placeholder="Ex: 10 mm"
-                min="0"
-                max="999"
-                data-threshold="3"
-              />
-              <small id="ref-volumeADAbsoluto" class="text-muted d-block"
-                >Ref: --</small
-              >
+        </div>
+      </div>
+
+      <!-- RESULTADOS -->
+      <div class="card mb-4">
+        <div class="card-header">Resultados</div>
+        <div class="card-body row g-3">
+
+          <div class="col-md-6">
+            <label>Fração de Ejeção (%)</label>
+            <input id="fe" class="form-control" readonly>
+          </div>
+
+          <div class="col-md-6">
+            <label>Massa VE (g)</label>
+            <input id="massaVE" class="form-control" readonly>
+          </div>
+
+          <div class="col-md-6">
+            <label>Índice Massa VE</label>
+            <input id="indiceMassaVE" class="form-control" readonly>
+          </div>
+
+          <div class="col-md-6">
+            <label>ERP VE</label>
+            <input id="erpVE" class="form-control" readonly>
+          </div>
+
+          <div class="col-md-6">
+            <label>Volume AE Indexado</label>
+            <div class="input-group">
+              <input id="volume_ae_indexado" class="form-control">
+              <button type="button" id="reset_ae" class="btn btn-outline-secondary">↺</button>
             </div>
           </div>
-        </fieldset>
 
-        <!-- Resultados -->
-        <fieldset class="col-12" id="resultados">
-          <legend>Resultados</legend>
-
-          <div class="row g-2">
-            <div class="col-md-6 col-lg-4">
-              <label for="fracaoEjecao" class="form-label"
-                >Fração de Ejeção</label
-              >
-              <input
-                type="text"
-                class="form-control like-disabled"
-                id="fracaoEjecao"
-                readonly
-              />
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <label for="massaVentricularEsquerda" class="form-label"
-                >Massa Ventricular Esquerda</label
-              >
-              <input
-                type="text"
-                class="form-control like-disabled"
-                id="massaVentricularEsquerda"
-                readonly
-              />
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <label for="indiceMassaVentricularEsquerda" class="form-label"
-                >Índice de Massa Ventricular Esquerda</label
-              >
-              <input
-                type="text"
-                class="form-control like-disabled"
-                id="indiceMassaVentricularEsquerda"
-                readonly
-              />
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-              <label for="espessuraRelativaParedeVE" class="form-label"
-                >Espessura Relativa de Parede VE</label
-              >
-              <input
-                type="text"
-                class="form-control like-disabled"
-                id="espessuraRelativaParedeVE"
-                readonly
-              />
-            </div>
-
-            <div class="col-md-6 col-lg-4 position-relative">
-              <label for="volumeAEIndexado" class="form-label"
-                >Volume A.E. Indexado</label
-              >
-              <input
-                type="text"
-                class="form-control pe-5"
-                id="volumeAEIndexado"
-                placeholder="Ex: 20 ml/m²"
-              />
-              <a href="#" id="recalcularAEIndexado" title="Recalcular Valores">
-                <i class="bi bi-arrow-repeat"></i>
-              </a>
-            </div>
-
-            <div class="col-md-6 col-lg-4 position-relative">
-              <label for="volumeADIndexado" class="form-label"
-                >Volume A.D. Indexado</label
-              >
-              <input
-                type="text"
-                class="form-control pe-5"
-                id="volumeADIndexado"
-                placeholder="Ex: 18 ml/m²"
-              />
-              <a href="#" id="recalcularADIndexado" title="Recalcular Valores">
-                <i class="bi bi-arrow-repeat"></i>
-              </a>
+          <div class="col-md-6">
+            <label>Volume AD Indexado</label>
+            <div class="input-group">
+              <input id="volume_ad_indexado" class="form-control">
+              <button type="button" id="reset_ad" class="btn btn-outline-secondary">↺</button>
             </div>
           </div>
-        </fieldset>
 
-        <!-- Estruturas -->
-        <fieldset class="col-12" id="estruturas">
-          <legend>Descrição das Estruturas</legend>
-          <button
-            type="button"
-            id="normalizarResultados"
-            class="btn btn-secondary mb-3"
-          >
+        </div>
+      </div>
+
+      <!-- ================= DESCRIÇÃO DAS ESTRUTURAS ================= -->
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span>Descrição das Estruturas</span>
+          <button type="button" id="btnNormalEstruturas" class="btn btn-sm btn-outline-success">
             Normal
           </button>
-
-          <div class="row g-2">
-            <div class="col-md-12 col-lg-12">
-              <label for="valvaMitral" class="form-label">Valva Mitral</label>
-              <input
-                list="valvaMitralOptions"
-                id="valvaMitral"
-                name="valvaMitral"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="valvaMitralOptions">
-                <option value="Abertura normal e competente. E/A: ; E/E':"></option>
-                <option value="Abertura adequada, refluxo importante funcional (Vena: mm, ORE: cm², VR: ml/bat ). Fluxo diastólico inavaliável devido ao refluxo."></option>
-                <option value="Cúspides espessados, com abertura diminuída (VP m/s, GRAD Máx mmHg, Grad Méd mmHg, PHT ms, AV cm²) e refluxo discreto. Função diastólica inavaliável devido à estenose."></option>
-                <option value="Prótese biológica com  folhetos delgados, abertura adequada (VP m/s, Grad Máx mmHg, Grad médio mmHg, PHT ms, AV cm², DVI) e refluxo mínimo. Função diastólica inavaliável devido à prótese."></option>
-                <option value="Prótese mecânica com aspecto usual, mobilidade preservada (VP M/S, GRAD MÁX MMHG, GRAD MÉDIO MMHG, PHT MS, AV CM², DVI) e refluxo mínimo. Função diastólica inavaliável devido à prótese."></option>
-              </datalist>
+        </div>
+      
+        <div class="card-body">
+      
+          <!-- Valvas -->
+          <div class="row mb-2">
+            <div class="col-2 d-flex align-items-center">
+              <span>Valva Mitral</span>
             </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="valvaAortica" class="form-label">Valva Aórtica</label>
-              <input
-                list="valvaAorticaOptions"
-                id="valvaAortica"
-                name="valvaAortica"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="valvaAorticaOptions">
-                <option value="Trivalvular com abertura adequada e competente."></option>
-                <option value="Trivalvular, pouco espessada, com abertura adequada e refluxo leve."></option>
-                <option value="Vávulas espessadas e calcificadas com abertura diminuída (VP m/s, Grad Máx MMHg, Grad Médio mmHg, AV cm²) e refluxo leve."></option>
-                <option value="Abertura adequada, refluxo moderado (VENA mm, LARGURA DO JATO/VSVE %, PHT ms)"></option>
-                <option value="Prótese biológica com cúspides delgadas, abertura adequada e competente."></option>
-                <option value="Prótese mecânica, de duplo disco, com boa mobilidade e abertura (VP M/S, GRAD MÁX MMHG, GRAD MÉDIO MMHG, TA MS, EOA CM², DVI) e refluxo mínimo."></option>
-              </datalist>
-            </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="valvaTricuspide" class="form-label"
-                >Valva Tricúspide</label
-              >
-              <input
-                list="valvaTricuspideOptions"
-                id="valvaTricuspide"
-                name="valvaTricuspide"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="valvaTricuspideOptions">
-                <option value="Abertura adequada, competente."></option>
-                <option value="Abertura adequada, refluxo mínimo que permitiu estimar a PSAP em mmHg."></option>
-                <option value="Abertura adequada, refluxo mínimo que não permitiu estimar a PSAP de forma satisfatória."></option>
-                
-              </datalist>
-            </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="valvaPulmonar" class="form-label"
-                >Valva Pulmonar</label
-              >
-              <input
-                list="valvaPulmonarOptions"
-                id="valvaPulmonar"
-                name="valvaPulmonar"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="valvaPulmonarOptions">
-                <option value="Abertura adequada, refluxo mínimo"></option>
-                <option value="Abertura adequada, tempo de aceleração do fluxo sistólico normal (ms - {Valor Normal > 105ms}-), Sugerindo pressão arterial pulmonar normal."></option>
-                <option value="Abertura adequada, tempo de aceleração do fluxo sistólico diminuído (ms - {Valor Normal > 105ms}-), Sugerindo hipertensão pulmonar."></option>
-              </datalist>
-            </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="ventriculoEsquerdo" class="form-label"
-                >Ventrículo Esquerdo</label
-              >
-              <input
-                list="ventriculoEsquerdoOptions"
-                id="ventriculoEsquerdo"
-                name="ventriculoEsquerdo"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="ventriculoEsquerdoOptions">
-                <option value="Soro Fracionado"></option>
-              </datalist>
-            </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="atrioEsquerdoDesc" class="form-label"
-                >Átrio Esquerdo</label
-              >
-              <input
-                list="atrioEsquerdoOptions"
-                id="atrioEsquerdoDesc"
-                name="atrioEsquerdoDesc"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="atrioEsquerdoOptions">
-                <option value="Válvula sem Retorno endovenoso"></option>
-                <option value="Válvula sem fechamento moderado"></option>
-                <option value="Fechamento parcial inferior a 50%"></option>
-                <option value="Soro Fracionado"></option>
-              </datalist>
-            </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="ventriculoDireito" class="form-label"
-                >Ventrículo Direito</label
-              >
-              <input
-                list="ventriculoDireitoOptions"
-                id="ventriculoDireito"
-                name="ventriculoDireito"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="ventriculoDireitoOptions">
-                <option value="Dimensões internas e função sistólica adequadas."></option>
-
-              </datalist>
-            </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="atrioDireito" class="form-label">Átrio Direito</label>
-              <input
-                list="atrioDireitoOptions"
-                id="atrioDireito"
-                name="atrioDireito"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="atrioDireitoOptions">
-                <option value="Normal. (Volume: ml/m²)  VCI com dimensões e variabilidade normais. PAD estimada em 3mmhg."></option>
-              </datalist>
-            </div>
-
-            <div class="col-md-12 col-lg-12">
-              <label for="septoInterAtrial" class="form-label"
-                >Septo Interatrial</label
-              >
-              <input
-                list="septoInterAtrialOptions"
-                id="septoInterAtrial"
-                name="septoInterAtrial"
-                class="form-select"
-                placeholder="Digite ou escolha uma frase..."
-              />
-              <datalist id="septoInterAtrialOptions">
-                <option value="Válvula sem Retorno endovenoso"></option>
-                <option value="Válvula sem fechamento moderado"></option>
-                <option value="Fechamento parcial inferior a 50%"></option>
-                <option value="Soro Fracionado"></option>
-              </datalist>
+            <div class="col-9">
+              <input list="valvaMitralOptions" id="valvaMitral" class="form-control">
             </div>
           </div>
-        </fieldset>
-
-        <fieldset class="col-12" id="conclusao">
-          <legend>Conclusão</legend>
-
-          <div class="row g-2">
-            <textarea name="" id="conclusaoTextArea" class="form-control" rows="5" placeholder="Laudo completo do paciente"></textarea>
+      
+          <div class="row mb-2">
+            <div class="col-2 d-flex align-items-center">
+              <span>Valva Aórtica</span>
+            </div>
+            <div class="col-9">
+              <input list="valvaAorticaOptions" id="valvaAortica" class="form-control">
+            </div>
           </div>
-
-          <div class="col-12 mt-3">
+      
+          <div class="row mb-2">
+            <div class="col-2 d-flex align-items-center">
+              <span>Valva Tricúspide</span>
+            </div>
+            <div class="col-9">
+              <input list="valvaTricuspideOptions" id="valvaTricuspide" class="form-control">
+            </div>
           </div>
-          </fieldset>
-
-          <button type="button" id="btnGerarLaudo" class="btn btn-primary">
-            Gerar Laudo
-          </button>
-          
-        </form>
-    </main>
-     <!-- Rodapé -->
-    <footer class="bg-light py-3 mt-4 border-top">
-      <div class="container text-center">
-        <small class="text-muted">
-          Dúvidas, críticas e sugestões, envie um e-mail para:
-          <a href="mailto:CardioIndice@gmail.com">CardioIndice@gmail.com</a>
-        </small>
+      
+          <div class="row mb-3">
+            <div class="col-2 d-flex align-items-center">
+              <span>Valva Pulmonar</span>
+            </div>
+            <div class="col-9">
+              <input list="valvaPulmonarOptions" id="valvaPulmonar" class="form-control">
+            </div>
+          </div>
+      
+          <!-- Câmaras -->
+          <div class="row mb-2">
+            <div class="col-2 d-flex align-items-center">
+              <span>Ventrículo Esquerdo</span>
+            </div>
+            <div class="col-9">
+              <input list="ventriculoEsquerdoOptions" id="ventriculoEsquerdo" class="form-control">
+            </div>
+          </div>
+      
+          <div class="row mb-2">
+            <div class="col-2 d-flex align-items-center">
+              <span>Átrio Esquerdo</span>
+            </div>
+            <div class="col-9">
+              <input list="atrioEsquerdoOptions" id="atrioEsquerdoDesc" class="form-control">
+            </div>
+          </div>
+      
+          <div class="row mb-2">
+            <div class="col-2 d-flex align-items-center">
+              <span>Ventrículo Direito</span>
+            </div>
+            <div class="col-9">
+              <input list="ventriculoDireitoOptions" id="ventriculoDireito" class="form-control">
+            </div>
+          </div>
+      
+          <div class="row mb-3">
+            <div class="col-2 d-flex align-items-center">
+              <span>Átrio Direito</span>
+            </div>
+            <div class="col-9">
+              <input list="atrioDireitoOptions" id="atrioDireito" class="form-control">
+            </div>
+          </div>
+      
+          <!-- Outros -->
+          <div class="row mb-2">
+            <div class="col-2 d-flex align-items-center">
+              <span>Pericárdio</span>
+            </div>
+            <div class="col-9">
+              <input list="pericardioOptions" id="pericardio" class="form-control">
+            </div>
+          </div>
+      
+          <div class="row mb-3">
+            <div class="col-2 d-flex align-items-center">
+              <span>Septo Interatrial</span>
+            </div>
+            <div class="col-9">
+              <input list="septoInteratrialOptions" id="septoInteratrial" class="form-control">
+            </div>
+          </div>
+      
+          <!-- Comentários -->
+          <div class="row">
+            <div class="col-2 d-flex align-items-start">
+              <span>Comentários</span>
+            </div>
+            <div class="col-9">
+              <textarea id="comentariosAdicionais" class="form-control" rows="3" placeholder="Comentários adicionais"></textarea>
+            </div>
+          </div>
+      
+        </div>
       </div>
-    </footer>
 
-    <script type="module" src="../js/main.js"></script>
-  </body>
+
+      <!-- CONCLUSÃO -->
+      <div class="card mb-4">
+        <div class="card-header">Conclusão</div>
+        <div class="card-body">
+          <textarea id="conclusao" class="form-control" rows="4"></textarea>
+        </div>
+      </div>
+
+      <button type="button" id="btnGerarLaudo" class="btn btn-success w-100 py-2">
+        Gerar Laudo
+      </button>
+
+    </form>
+
+    <!-- DATALISTS -->
+
+    <datalist id="valvaMitralOptions">
+      <option value="Abertura normal e competente. E/A: ; E/E’: .">
+      <option
+        value="Abertura adequada, refluxo importante funcional (Vena: mm, ORE: cm², VR: ml/bat). Fluxo diastólico inavaliável devido ao refluxo.">
+      <option
+        value="Cúspides espessados, com abertura diminuída (VP m/s, Grad Máx mmHg, Grad Méd mmHg, PHT ms, AV cm²) e refluxo discreto. Função diastólica inavaliável devido à estenose.">
+      <option
+        value="Prótese biológica com folhetos delgados, abertura adequada (VP m/s, Grad Máx mmHg, Grad médio mmHg, PHT ms, AV cm², DVI) e refluxo mínimo. Função diastólica inavaliável devido à prótese.">
+      <option
+        value="Prótese mecânica com aspecto usual, mobilidade preservada (VP m/s, Grad Máx mmHg, Grad médio mmHg, PHT ms, AV cm², DVI) e refluxo mínimo. Função diastólica inavaliável devido à prótese.">
+    </datalist>
+
+    <datalist id="valvaAorticaOptions">
+      <option value="Trivalvular com abertura adequada e competente.">
+      <option value="Trivalvular, pouco espessada, com abertura adequada e refluxo leve.">
+      <option
+        value="Válvulas espessadas e calcificadas com abertura diminuída (VP m/s, Grad Máx mmHg, Grad Médio mmHg, AV cm²) e refluxo leve.">
+      <option value="Abertura adequada, refluxo moderado (Vena mm, largura do jato/VSVE %, PHT ms).">
+      <option value="Prótese biológica com cúspides delgadas, abertura adequada e competente.">
+      <option
+        value="Prótese mecânica de duplo disco, com boa mobilidade e abertura (VP m/s, Grad Máx mmHg, Grad Médio mmHg, TA ms, EOA cm², DVI) e refluxo mínimo.">
+    </datalist>
+
+    <datalist id="valvaTricuspideOptions">
+      <option value="Abertura adequada, competente.">
+      <option value="Abertura adequada, refluxo mínimo que permitiu estimar a PSAP em mmHg.">
+      <option value="Abertura adequada, refluxo mínimo que não permitiu estimar a PSAP de forma satisfatória.">
+    </datalist>
+
+    <datalist id="valvaPulmonarOptions">
+      <option value="Abertura adequada, refluxo mínimo.">
+      <option
+        value="Abertura adequada, tempo de aceleração do fluxo sistólico normal (ms – Valor normal > 105 ms), sugerindo pressão arterial pulmonar normal.">
+      <option
+        value="Abertura adequada, tempo de aceleração do fluxo sistólico diminuído (ms – Valor normal > 105 ms), sugerindo hipertensão pulmonar.">
+    </datalist>
+
+    <datalist id="ventriculoDireitoOptions">
+      <option value="Dimensões internas e função sistólica adequadas.">
+    </datalist>
+
+    <datalist id="atrioDireitoOptions">
+      <option value="Normal. (Volume: ml/m²). VCI com dimensões e variabilidade normais. PAD estimada em 3 mmHg.">
+    </datalist>
+
+  </div>
+
+  <script type="module" src="./app/calculator.js"></script>
+  <footer class="mt-5 pt-3 px-4 border-top text-muted">
+    <p>
+      Este sistema foi desenvolvido com base nas diretrizes e recomendações mais atuais da Sociedade Brasileira de
+      Cardiologia (SBC) e em referências amplamente aceitas na prática clínica. No entanto, as informações, cálculos e
+      textos gerados têm caráter exclusivamente auxiliar.
+    </p>
+    <p>
+      O conteúdo apresentado não substitui a avaliação clínica individual, o julgamento médico, nem a interpretação
+      realizada por profissional habilitado. A responsabilidade pelo laudo, conclusões diagnósticas e condutas clínicas é
+      integralmente do médico responsável pelo exame.
+    </p>
+    <p>
+      Os desenvolvedores deste sistema não se responsabilizam por decisões clínicas, diagnósticos ou desfechos decorrentes
+      do uso das informações aqui geradas.
+    </p>
+  </footer>
+
+</body>
+
 </html>

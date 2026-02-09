@@ -1,228 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exames Cardiológicos</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../css/laudo.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="text-end">
-        <span id="clinicaMedico" class="text-muted fst-italic"></span>
-      </div>
-      <div class="text-center mb-1">
-        <h1 id="exame">Ecocardiograma Transtorácico</h1>
-      </div>
 
-      <div class="row mb-3">
-        <div class="col-12">
-          <h5 class="fw-bold">Identificação do Paciente</h5>
-          <hr />
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <title>Laudo – Ecocardiograma Transtorácico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./ui/laudo.css">
+</head>
 
-        <!-- Linha 1 -->
-        <div class="col-md-4">
-          <p class="mb-0"><strong>Nome:</strong> <span id="nome"></span></p>
-        </div>
-        <div class="col-md-4">
-          <p class="mb-0"><strong>Peso:</strong> <span id="peso"></span> Kg</p>
-        </div>
-        <div class="col-md-4">
-          <p class="mb-0">
-            <strong>Sup. corp.:</strong>
-            <span id="superficieCorporal"></span> m²/kg
-          </p>
-        </div>
+<body>
 
-        <!-- Linha 2 -->
-        <div class="col-md-4">
-          <p class="mb-0">
-            <strong>Data do exame:</strong> <span id="data"></span>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <p class="mb-0">
-            <strong>Altura:</strong> <span id="altura"></span> cm
-          </p>
-        </div>
-        <div class="col-md-4">
-          <p class="mb-0"><strong>Sexo:</strong> <span id="sexo"></span></p>
-        </div>
+  <header class="cabecalho">
+    <div id="medico_clinica" class="clinica"></div>
+    <h1>Ecocardiograma Transtorácico</h1>
+    <hr>
+  </header>
 
-        <!-- Linha 3 -->
-        <div class="col-md-4">
-          <p class="mb-0">
-            <strong>Data de nasc.:</strong>
-            <span id="dataNascimento"></span>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <p class="mb-0">
-            <strong>IMC:</strong> <span id="imcValue"></span>
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
-          <table class="table table-bordered custom-table-spacing">
-            <thead>
-              <tr class="table-secondary">
-                <th>Parâmetros Básicos</th>
-                <th>Valor</th>
-                <th>Referência</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Aorta</td>
-                <td><span id="aortaValue"></span></td>
-                <td><span id="aortaReference"></span></td>
-              </tr>
-              <tr>
-                <td>Átrio Esquerdo</td>
-                <td><span id="atrioEsquerdoValue"></span></td>
-                <td><span id="atrioEsquerdoReference"></span></td>
-              </tr>
-
-              <tr>
-                <td>Diâmetro Diastólico Basal VD</td>
-                <td><span id="diametroBasalVDValue"></span></td>
-                <td><span id="diametroBasalVDReference"></span></td>
-              </tr>
-              <tr>
-
-                <td>Diâmetro Diastólico Final VE</td>
-                <td><span id="diametroDiastolicoFinalVEValue"></span></td>
-                <td><span id="diametroDiastolicoFinalVEReference"></span></td>
-              </tr>
-
-              <tr>
-                <td>Diâmetro Sistólico Final VE</td>
-                <td><span id="diametroSistolicoFinalVEValue"></span></td>
-                <td><span id="diametroSistolicoFinalVEReference"></span></td>
-              </tr>
-              <tr>
-
-                <td>Espessura Diastólica Septo</td>
-                <td><span id="espessuraDiastolicaSeptoValue"></span></td>
-                <td><span id="espessuraDiastolicaSeptoReference"></span></td>
-              </tr>
-
-              <tr>
-                <td>Parede Posterior VE</td>
-                  <td><span id="paredePosteriorVEValue"></span></td>
-                  <td><span id="paredePosteriorVEReference"></span></td>
-                </td>
-              </tr>
-              <tr>
-
-                <td>Fração de Ejeção</td>
-                <td><span id="fracaoEjecaoValue"></span></td>
-                <td><span id="fracaoEjecaoReference"></span></td>
-              </tr>
-
-              <tr>
-                <td>Massa Ventricular Esquerda</td>
-                <td><span id="massaVentricularEsquerdaValue"></span></td>
-                <td><span id="massaVentricularEsquerdaReference"></span></td>
-              </tr>
-              <tr>
-                <td>Índice Massa Ventricular Esquerda</td>
-                <td><span id="indiceMassaVentricularEsquerdaValue"></span></td>
-                <td><span id="indiceMassaVentricularEsquerdaReference"></span></td>
-              </tr>
-
-              <tr>
-                <td>Espessura Relativa Parede VE</td>
-                <td><span id="espessuraRelativaParedeVEValue"></span></td>
-                <td><span id="espessuraRelativaParedeVEReference"></span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="col-6">
-          <table class="table table-bordered custom-table-spacing">
-            <thead>
-              <tr class="table-secondary">
-                <th>Parâmetros Adicionais</th>
-                <th>Valor</th>
-                <th>Referência</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Sinal de Simpson</td>
-                <td></td>
-                <td></td>
-              </tr>
-              
-            </tbody>
-             
-          </table>
-        </div>
-      </div>
-      <div class="mb-3">
-        <h5 class="fw-bold">Descrição das Estruturas</h5>
-        <section>
-          <p class="mb-0">
-            <strong>Valva Mitral: </strong><span id="valvaMitralObs"></span>
-          </p>
-          <p class="mb-0">
-            <strong>Valva Aórtica: </strong><span id="valvaAorticaObs"></span>
-          </p>
-          <p class="mb-0">
-            <strong>Valva Tricúspide: </strong
-            ><span id="valvaTricuspideObs"></span>
-          </p>
-          <p class="mb-0">
-            <strong>Valva Pulmonar: </strong><span id="valvaPulmonarObs"></span>
-          </p>
-          <p class="mb-0">
-            <strong>Ventrículo Esquerdo: </strong>
-            <span id="ventriculoEsquerdoObs"></span>
-          </p>
-
-          <p class="mb-0">
-            <strong>Átrio Esquerdo: </strong><span id="atrioEsquerdoObs"></span>
-          </p>
-          <p class="mb-0">
-            <strong>Ventrículo Direito: </strong
-            ><span id="ventriculoDireitoObs"></span>
-          </p>
-          <p class="mb-0">
-            <strong>Átrio Direito: </strong><span id="atrioDireitoObs"></span>
-          </p>
-          <p class="mb-0">
-            <strong>Septo Interatrial: </strong
-            ><span id="septoInterAtrialObs"></span>
-          </p>
-        </section>
-      </div>
-
-      <hr />
-
-      <div>
-        <h5 class="fw-bold">Conclusão</h5>
-        <div id="conclusao"></div>
-      </div>
-
-      <div id="assinatura" class="assinatura-medico">
-        <p class="text-center mt-5 text-muted">
-          <span id="nomeMedico"></span><br />
-          <span id="crmMedico"></span>
-        </p>
-      </div>
-
+  <section class="identificacao">
+    <div class="col-4">
+      <strong>Nome:</strong> <span id="paciente_nome"></span><br>
+      <strong>Data nasc.:</strong> <span id="data_nascimento"></span><br>
+      <strong>Sexo:</strong> <span id="sexo"></span><br>
     </div>
-    <script src="../js/laudo.js" type="module"></script>
-  </body>
+
+    <div>
+      
+      <strong>Altura:</strong> <span id="altura"></span> cm<br>
+      <strong>Peso:</strong> <span id="peso"></span> kg<br>
+      <strong>Idade:</strong> <span id="idade"></span><br>
+    </div>
+
+    <div>
+      <strong>IMC:</strong> <span id="imc"></span><br>
+      <strong>Sup. corporal:</strong> <span id="superficie_corporal"></span> m²<br>
+      <strong>Data do exame:</strong> <span id="data_exame"></span><br>
+    </div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Parâmetro</th>
+        <th>Valor</th>
+        <th>Referência</th>
+        <th>Parâmetro</th>
+        <th>Valor</th>
+        <th>Referência</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr data-param="aorta_raiz">
+        <td data-label="aorta_raiz"></td>
+        <td data-value="aorta_raiz"></td>
+        <td data-ref="aorta_raiz"></td>
+
+        <td data-label="atrio_esquerdo"></td>
+        <td data-value="atrio_esquerdo"></td>
+        <td data-ref="atrio_esquerdo"></td>
+      </tr>
+
+      <tr data-param="vd_basal">
+        <td data-label="vd_basal"></td>
+        <td data-value="vd_basal"></td>
+        <td data-ref="vd_basal"></td>
+
+        <td data-label="ddve"></td>
+        <td data-value="ddve"></td>
+        <td data-ref="ddve"></td>
+      </tr>
+
+      <tr data-param="dsve">
+        <td data-label="dsve"></td>
+        <td data-value="dsve"></td>
+        <td data-ref="dsve"></td>
+
+        <td data-label="septo"></td>
+        <td data-value="septo"></td>
+        <td data-ref="septo"></td>
+      </tr>
+
+      <tr data-param="paredePosterior">
+        <td data-label="paredePosterior"></td>
+        <td data-value="paredePosterior"></td>
+        <td data-ref="paredePosterior"></td>
+
+        <td data-label="volume_ae_indexado"></td>
+        <td data-value="volume_ae_indexado"></td>
+        <td data-ref="volume_ae_indexado"></td>
+      </tr>
+
+      <tr data-param="volume_ad_indexado">
+        <td data-label="volume_ad_indexado"></td>
+        <td data-value="volume_ad_indexado"></td>
+        <td data-ref="volume_ad_indexado"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <section class="bloco">
+    <h2>Observações</h2>
+
+    <div><strong>Ventrículo Esquerdo:</strong> <span id="ventriculoEsquerdo"></span></div>
+    <div><strong>Átrio Esquerdo:</strong> <span id="atrioEsquerdoDesc"></span></div>
+    <div><strong>Ventrículo Direito:</strong> <span id="ventriculoDireito"></span></div>
+    <div><strong>Átrio Direito:</strong> <span id="atrioDireito"></span></div>
+
+    <br>
+
+    <div><strong>Valva Mitral:</strong> <span id="valvaMitral"></span></div>
+    <div><strong>Valva Tricúspide:</strong> <span id="valvaTricuspide"></span></div>
+    <div><strong>Valva Aórtica:</strong> <span id="valvaAortica"></span></div>
+    <div><strong>Valva Pulmonar:</strong> <span id="valvaPulmonar"></span></div>
+
+    <br>
+
+    <div><strong>Pericárdio:</strong> <span id="pericardio"></span></div>
+    <div><strong>Septo Interatrial:</strong> <span id="septoInteratrial"></span></div>
+
+    <br>
+
+    <div><strong>Comentários adicionais:</strong> <span id="comentariosAdicionais"></span></div>
+  </section>
+
+  <section class="bloco conclusao">
+    <h2>Conclusão</h2>
+    <div id="conclusao"></div>
+  </section>
+
+  <footer class="assinatura">
+    <div id="medico_nome"></div>
+    <div>CRM: <span id="medico_crm"></span></div>
+  </footer>
+
+  <script type="module" src="./ui/laudo.js"></script>
+</body>
+
 </html>

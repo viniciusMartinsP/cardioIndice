@@ -1,0 +1,144 @@
+/* =====================
+   BASE
+===================== */
+
+body {
+    background-color: #f4f8f6;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    color: #1f2d2b;
+}
+
+.container {
+    max-width: 980px;
+}
+
+/* =====================
+   TIPOGRAFIA
+===================== */
+
+h2 {
+    color: #1f7a5a;
+}
+
+.card-header {
+    background-color: #e6f3ee;
+    color: #145c44;
+    font-weight: 600;
+    border-bottom: 1px solid #cfe6dc;
+}
+
+label {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* =====================
+   CARDS
+===================== */
+
+.card {
+    border-radius: 10px;
+    border: 1px solid #d6ebe3;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* =====================
+   INPUTS
+===================== */
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #cfded8;
+    font-size: 0.95rem;
+}
+
+.form-control:focus {
+    border-color: #1f7a5a;
+    box-shadow: 0 0 0 0.15rem rgba(31, 122, 90, 0.2);
+}
+
+/* readonly visual */
+.form-control[readonly] {
+    background-color: #eef7f3;
+    color: #145c44;
+    font-weight: 500;
+}
+
+/* =====================
+   SMALL / REFERÊNCIAS
+===================== */
+
+small {
+    color: #5b7d72;
+    font-size: 0.75rem;
+}
+
+/* =====================
+   BOTÕES
+===================== */
+
+.btn-success {
+    background-color: #1f7a5a;
+    border-color: #1f7a5a;
+    font-weight: 600;
+}
+
+.btn-success:hover {
+    background-color: #18644a;
+    border-color: #18644a;
+}
+
+.btn-outline-success {
+    color: #1f7a5a;
+    border-color: #1f7a5a;
+}
+
+.btn-outline-success:hover {
+    background-color: #1f7a5a;
+    color: #fff;
+}
+
+/* reset buttons */
+.btn-outline-secondary {
+    border-radius: 8px;
+}
+
+/* =====================
+   RADIO BUTTONS
+===================== */
+
+.form-check-input:checked {
+    background-color: #1f7a5a;
+    border-color: #1f7a5a;
+}
+
+/* =====================
+   TEXTAREA
+===================== */
+
+textarea.form-control {
+    resize: vertical;
+}
+
+/* =====================
+   SEO INTRO
+===================== */
+
+.mb-4>p.text-muted {
+    font-size: 0.95rem;
+    max-width: 720px;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
