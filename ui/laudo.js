@@ -103,11 +103,39 @@ function preencherObservacoes(d) {
 }
 
 // ===== Copiar laudo para a área de transferência =====
+
+// Converte a <table> em texto com colunas alinhadas por espaços
+function tabelaParaTexto(table) {
+  const linhas = [...table.querySelectorAll("tr")]
+    .filter(tr => tr.style.display !== "none")
+    .map(tr => {
+      const c = [...tr.querySelectorAll("th, td")].map(td => td.innerText.trim());
+      while (c.length < 6) c.push("");   // última linha tem só 3 células
+      return c;
+    });
+
+  // largura de cada coluna = maior conteúdo da coluna
+  const larg = [0, 1, 2, 3, 4, 5].map(i => Math.max(...linhas.map(l => l[i].length)));
+
+  const fmt = l => {
+    const esq = l.slice(0, 3).map((v, i) => v.padEnd(larg[i])).join("   ");
+    const dir = l.slice(3).map((v, i) => v.padEnd(larg[i + 3])).join("   ");
+    return (esq + "      " + dir).trimEnd();   // 6 espaços entre os dois blocos
+  };
+
+  const out = linhas.map(fmt);
+  out.splice(1, 0, "-".repeat(out[0].length)); // linha separadora abaixo do cabeçalho
+  return out.join("\n");
+}
+
 document.getElementById("btn_copiar")?.addEventListener("click", async (e) => {
   const btn = e.currentTarget;
   const partes = [...document.body.children].filter(el => !el.matches("button, script"));
 
-  const texto = partes.map(el => el.innerText.trim()).join("\n\n");
+  // ← a única mudança em relação à versão anterior: tabela vira texto alinhado
+  const texto = partes
+    .map(el => el.tagName === "TABLE" ? tabelaParaTexto(el) : el.innerText.trim())
+    .join("\n\n");
   const html = partes.map(el => el.outerHTML).join("");
 
   try {
@@ -116,7 +144,7 @@ document.getElementById("btn_copiar")?.addEventListener("click", async (e) => {
       "text/html": new Blob([html], { type: "text/html" }),
     })]);
   } catch {
-    await navigator.clipboard.writeText(texto); // fallback: só texto
+    await navigator.clipboard.writeText(texto);
   }
 
   const original = btn.textContent;
