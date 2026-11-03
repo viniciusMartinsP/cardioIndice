@@ -101,3 +101,25 @@ function preencherObservacoes(d) {
     if (el && d[id]) el.textContent = d[id];
   });
 }
+
+// ===== Copiar laudo para a área de transferência =====
+document.getElementById("btn_copiar")?.addEventListener("click", async (e) => {
+  const btn = e.currentTarget;
+  const partes = [...document.body.children].filter(el => !el.matches("button, script"));
+
+  const texto = partes.map(el => el.innerText.trim()).join("\n\n");
+  const html = partes.map(el => el.outerHTML).join("");
+
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      "text/plain": new Blob([texto], { type: "text/plain" }),
+      "text/html": new Blob([html], { type: "text/html" }),
+    })]);
+  } catch {
+    await navigator.clipboard.writeText(texto); // fallback: só texto
+  }
+
+  const original = btn.textContent;
+  btn.textContent = "COPIADO!";
+  setTimeout(() => (btn.textContent = original), 1500);
+});
