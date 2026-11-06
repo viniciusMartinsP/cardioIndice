@@ -26,6 +26,12 @@ function calcularIdade(dataISO) {
   return idade;
 }
 
+function hojeLocalISO() {
+  const d = new Date();
+  const p = n => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
 function preencherIdentificacao(d) {
   const mapa = {
     paciente_nome: d.paciente_nome,
@@ -53,8 +59,9 @@ function preencherIdentificacao(d) {
   }
 
   document.getElementById("data_nascimento").textContent = formatarDataISO(d.data_nascimento);
-  document.getElementById("idade").textContent = calcularIdade(d.data_nascimento)+" anos";
-  document.getElementById("data_exame").textContent = formatarDataISO(new Date().toISOString().slice(0,10));
+  const idade = calcularIdade(d.data_nascimento);
+  document.getElementById("idade").textContent = idade === "" ? "" : `${idade} anos`;
+  document.getElementById("data_exame").textContent = formatarDataISO(hojeLocalISO());
 }
 
 function preencherTabela(dados) {
@@ -65,18 +72,26 @@ function preencherTabela(dados) {
     const label = document.querySelector(`[data-label="${id}"]`);
     const value = document.querySelector(`[data-value="${id}"]`);
     const ref = document.querySelector(`[data-ref="${id}"]`);
-    const row = label?.closest("tr");
 
-    if (!label || valor == null || valor === "") {
-      if (row) row.style.display = "none";
-      return;
-    }
+    if (!label || valor == null || valor === "") return; // só deixa as células vazias
 
     label.textContent = def.label;
     value.textContent = def.unidade ? `${valor} ${def.unidade}` : valor;
 
     const r = def[dados.sexo];
-    ref.textContent = r ? `${r.min} – ${r.max} ${def.unidade ?? ""}` : "—";
+    if (!r) {
+      ref.textContent = "—";
+    } else if (r.max == null || r.max >= 999) {
+      ref.textContent = `≥ ${r.min} ${def.unidade ?? ""}`.trim();
+    } else {
+      ref.textContent = `${r.min} – ${r.max} ${def.unidade ?? ""}`.trim();
+    }
+  });
+
+  // esconde apenas as linhas em que os DOIS lados estão vazios
+  document.querySelectorAll("table tbody tr").forEach(tr => {
+    const vazia = [...tr.querySelectorAll("td")].every(td => !td.textContent.trim());
+    if (vazia) tr.style.display = "none";
   });
 }
 

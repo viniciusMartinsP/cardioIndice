@@ -75,7 +75,7 @@ export const referenciasClinicas = {
     F: { min: 0, max: 27 }
   },
   tapse: {
-    label: "Volume A.D. Indexado",
+    label: "TAPSE",
     M: { min: 17, max: 999 },
     F: { min: 17, max: 999 }
   },

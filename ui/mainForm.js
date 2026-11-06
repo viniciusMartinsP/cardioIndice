@@ -88,13 +88,17 @@ export function getMainForm() {
       if (!ref || !sexo || !small || !input) return;
 
       const { min, max } = ref[sexo];
-      small.textContent = `Referência (${sexo}): ${min} – ${max}`;
+      const semMax = max == null || max >= 999;
+
+      small.textContent = semMax
+        ? `Referência (${sexo}): ≥ ${min}`
+        : `Referência (${sexo}): ${min} – ${max}`;
 
       input.classList.remove("is-valid", "is-invalid");
 
       if (valor == null) return;
 
-      if (valor < min || valor > max) {
+      if (valor < min || (!semMax && valor > max)) {
         input.classList.add("is-invalid");
       } else {
         input.classList.add("is-valid");
