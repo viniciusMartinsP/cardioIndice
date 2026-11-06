@@ -30,6 +30,10 @@ export const DEFINICAO_PARAMETROS = {
   fe: {
     label: "Fração de Ejeção",
     unidade: "%"
+  },
+  tapse: {
+    label: "TAPSE",
+    unidade: "mm"
   }
 };
 
@@ -49,5 +53,9 @@ export const REFERENCIAS = {
   fe: {
     M: { min: 55, max: 70 },
     F: { min: 55, max: 70 }
-  }
+  },
+  tapse: {
+    M: { min: 17, max: 999 },
+    F: { min: 17, max: 999 }
+  },
 };
