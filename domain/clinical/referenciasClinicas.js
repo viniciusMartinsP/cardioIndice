@@ -66,13 +66,18 @@ export const referenciasClinicas = {
   },
   volume_ae_indexado: {
     label: "Volume A.E. Indexado",
-    M: { min: 0, max: 48 },
-    F: { min: 0, max: 48 }
+    M: { min: 0, max: 34 },
+    F: { min: 0, max: 34 }
   },
   volume_ad_indexado: {
     label: "Volume A.D. Indexado",
-    M: { min: 1, max: 17 },
-    F: { min: 0, max: 19 }
+    M: { min: 1, max: 32 },
+    F: { min: 0, max: 27 }
+  },
+  tapse: {
+    label: "Volume A.D. Indexado",
+    M: { min: 17, max: 999 },
+    F: { min: 17, max: 999 }
   },
 };
   
