@@ -43,6 +43,8 @@ export function getMainForm() {
       paredePosterior: parseNumber(get("paredePosterior")),
       volume_ae_abs: parseNumber(get("volume_ae_abs")),
       volume_ad_abs: parseNumber(get("volume_ad_abs")),
+      tapse: parseNumber(get("tapse")),
+
 
       fe: get("fe")?.value || "",
       massaVE: get("massaVE")?.value || "",
